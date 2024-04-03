@@ -1,0 +1,20 @@
+*{
+    border: 1px solid red;
+}
+#app {
+    background: linear-gradient(180deg,#009688 20%, #D8DBD5 20% );
+    color: blue;
+}
+
+#contacts-bar {
+    width: 200px;
+    background-color: rgb(234, 234, 234);
+}
+#chat-bar {
+    width: calc(100% - 200px);
+    background-color: grey;
+}
+.navbar {
+    height: 80px;
+    background-color: #EAEAEA;
+}
