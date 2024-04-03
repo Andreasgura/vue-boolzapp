@@ -51,6 +51,9 @@
                     </ul>
 
                 </div>
+            
+                <!-- notifications -->
+
                 <div id="notification">
                     <ul class="d-flex  align-items-center p-3 m-0 ">
                         <li>
@@ -69,7 +72,10 @@
                         </li>
                     </ul>
                 </div>
-                <div class="search">
+
+                <!-- search -->
+
+                <div id="search">
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1">
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -77,15 +83,18 @@
                         <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Username" aria-describedby="basic-addon1">
                       </div>
                 </div>
+
+                <!-- contacts -->
+
                 <div id="contacts">
                     <div>
-                        <ul class="d-flex  align-items-center p-3 m-0 ">
+                        <ul class="d-flex  align-items-center p-3 m-0" v-for="(contact, index) in contacts" :key="contact.id">
                             <li class="avatar">
-                                <img src="./img/avatar_io.jpg" alt="myavatar" class="w-100 rounded-circle ">
+                                <img :src="'./img/'+contact.avatar" :alt="contact.name" class="w-100 rounded-circle ">
                             </li>
                             <li>
                                 <span class="px-2 ">
-                                    Sofia
+                                    {{contact.name}}
                                 </span>
                                 <br>
                                 <span class="px-2 ">
