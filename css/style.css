@@ -1,20 +1,38 @@
+:root {
+	--color-header: #eaeaea;
+	--color-notification: #8edafc;
+	--color-active: #e9ebeb;
+	--color-icons: #b1b1b1;
+	--color-recived-message: #d5f9ba;
+	--color-sent-message: #ffffff;
+}
 *{
-    border: 1px solid red;
+    list-style: none;
+}
+#app {
+    font-family: "Roboto", sans-serif;
+}
+#myavatar{
+    width: 50px;
+    height: 50px;
 }
 #app {
     background: linear-gradient(180deg,#009688 20%, #D8DBD5 20% );
-    color: blue;
 }
 
 #contacts-bar {
-    width: 200px;
-    background-color: rgb(234, 234, 234);
+    width: 300px;
+    background-color: var(--color-sent-message)
+}
+#contacts-bar i {
+    padding: 10px;
+    color: var(--color-icons);
 }
 #chat-bar {
-    width: calc(100% - 200px);
-    background-color: grey;
+    width: calc(100% - 300px);
+    background-image: url(../img/mine.jpg)
 }
 .navbar {
     height: 80px;
-    background-color: #EAEAEA;
+    background-color: var(--color-header)
 }
