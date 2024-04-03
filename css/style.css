@@ -20,7 +20,7 @@
     height: 50px;
 }
 #app {
-    background: linear-gradient(180deg,#009688 20%, #D8DBD5 20% );
+    background: linear-gradient(180deg,#009688 20%, #DADBD4 20% );
 }
 
 #contacts-bar {
@@ -56,9 +56,21 @@ i {
 
 #chat-bar {
     width: calc(100% - 300px);
-    background-image: url(../img/mine.jpg)
+    
 }
-.navbar {
+.navbar,
+#write-message {
     height: 70px;
     background-color: var(--color-header)
+}
+#current-chat {
+    height: calc(100% - 140px);
+    background-image: url(../img/mine.jpg); 
+    overflow-y: auto;
+}
+#write-message .side {
+    width: 80px;
+}
+#write-message div:nth-child(2){
+    width: calc(100% - 160px);
 }
