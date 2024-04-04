@@ -89,7 +89,9 @@
 
                 <div id="contacts">
                     <div>
-                        <ul class="d-flex  align-items-center p-3 m-0" :class="{active: index === activeContactId}" @click="selectContact(contact.id)" v-for="(contact, index) in contacts" :key="contact.id">
+                        <ul class="d-flex  align-items-center p-3 m-0" :class="{active: contact.id === activeContactId}" 
+                        @click="selectContact(contact.id)" 
+                        v-for="(contact, index) in contacts" :key="contact.id">
                             <li class="avatar">
                                 <img :src="'./img/'+contact.avatar" :alt="contact.name" class="w-100 rounded-circle ">
                             </li>
@@ -117,7 +119,7 @@
                         </li>
                         <li>
                             <span class="px-2 ">
-                                {{contacts[activeContactId].name}}
+                                {{activeContact.name}}
                             </span>
                             <br>
                             <span class="px-2 ">
@@ -157,7 +159,9 @@
                         <i class="fa-regular fa-face-smile"></i>
                     </div>
                     <div>
-                        <input type="text" class="form-control" placeholder="Scrivi un messaggio" aria-label="Username" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Scrivi un messaggio" aria-label="Username" aria-describedby="basic-addon1" 
+                        v-model="textMessage"
+                        @keyup.enter="newMessage" >
                     </div>
                     <div class="side">
                         <i class="fa-solid fa-microphone"></i>
