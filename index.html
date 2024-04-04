@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
     <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
     <script src="./js/script.js" type="module"></script>
 </head>
@@ -88,12 +89,12 @@
 
                 <div id="contacts">
                     <div>
-                        <ul class="d-flex  align-items-center p-3 m-0" v-for="(contact, index) in contacts" :key="contact.id">
+                        <ul class="d-flex  align-items-center p-3 m-0" :class="{active: index === activeMessageId}" @click="selectContact(contact.id)" v-for="(contact, index) in contacts" :key="contact.id">
                             <li class="avatar">
                                 <img :src="'./img/'+contact.avatar" :alt="contact.name" class="w-100 rounded-circle ">
                             </li>
                             <li>
-                                <span class="px-2 ">
+                                <span class="px-2">
                                     {{contact.name}}
                                 </span>
                                 <br>
@@ -116,7 +117,7 @@
                         </li>
                         <li>
                             <span class="px-2 ">
-                                Sofia
+                                {{contacts[activeMessageId].name}}
                             </span>
                             <br>
                             <span class="px-2 ">
@@ -151,7 +152,7 @@
                         <i class="fa-regular fa-face-smile"></i>
                     </div>
                     <div>
-                        <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Username" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Scrivi un messaggio" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                     <div class="side">
                         <i class="fa-solid fa-microphone"></i>

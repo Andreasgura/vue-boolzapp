@@ -69,8 +69,11 @@ i {
     overflow-y: auto;
 }
 #write-message .side {
-    width: 80px;
+    width: 50px;
 }
 #write-message div:nth-child(2){
-    width: calc(100% - 160px);
+    width: calc(100% - 100px);
+}
+.active{
+    background-color: var(--color-active)
 }

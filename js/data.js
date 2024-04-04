@@ -4,6 +4,7 @@ export const contacts = [
         name: 'Michele',
         avatar: 'avatar_1.jpg',
         visible: true,
+        // atcivindexdi deve cambiare e deve diventare uguare all'indice che ha come elemento la proprietà id = all'id che sto cliccando --al valore della proprietà id dell'elemento che ha come indice l'id che ti sto passando
         messages: [
             {
                 date: '10/01/2020 15:30:55',
