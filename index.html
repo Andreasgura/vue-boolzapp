@@ -89,7 +89,7 @@
 
                 <div id="contacts">
                     <div>
-                        <ul class="d-flex  align-items-center p-3 m-0" :class="{active: index === activeMessageId}" @click="selectContact(contact.id)" v-for="(contact, index) in contacts" :key="contact.id">
+                        <ul class="d-flex  align-items-center p-3 m-0" :class="{active: index === activeContactId}" @click="selectContact(contact.id)" v-for="(contact, index) in contacts" :key="contact.id">
                             <li class="avatar">
                                 <img :src="'./img/'+contact.avatar" :alt="contact.name" class="w-100 rounded-circle ">
                             </li>
@@ -117,7 +117,7 @@
                         </li>
                         <li>
                             <span class="px-2 ">
-                                {{contacts[activeMessageId].name}}
+                                {{contacts[activeContactId].name}}
                             </span>
                             <br>
                             <span class="px-2 ">
@@ -145,7 +145,12 @@
     
                 </div>
                 <div id="current-chat">
-                    sdhgfj
+                    <div class="d-flex flex-column" v-for="(msg, index) in activeContact.messages">
+                            <div class="message d-flex flex-column" :class="[msg.status]">
+                            <div>{{msg.message}}</div>
+                            <div class="ms-auto ">ora</div>
+                        </div>
+                    </div>
                 </div>
                 <div id="write-message" class="d-flex align-items-center justify-content-between ">
                     <div class="side">

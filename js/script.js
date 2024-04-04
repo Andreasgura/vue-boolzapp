@@ -7,17 +7,23 @@ createApp({
     data() {
       return {
         contacts,
-        activeMessageId : 0,
+        activeContactId : 1,
       }
     },
     methods : {
       selectContact(id){
-        this.activeMessageId = this.contacts.findIndex((el)=> el.id === id)
-        console.log(this.activeMessageId);
-        return this.activeMessageId
+        this.activeContactId = this.contacts.findIndex((el)=> el.id === id)
+        console.log(this.activeContactId);
+        return this.activeContactId
       } 
       },
-  mounted () { 
+    computed : {
+      activeContact(){
+        return this.contacts.find((el)=> el.id === this.activeContactId) 
+        },
+
+    },
+    mounted () { 
             
     }
   }).mount('#app');

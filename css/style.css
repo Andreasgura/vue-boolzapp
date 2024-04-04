@@ -3,7 +3,7 @@
 	--color-notification: #8edafc;
 	--color-active: #e9ebeb;
 	--color-icons: #b1b1b1;
-	--color-recived-message: #d5f9ba;
+	--color-recived-message: #D5F9BA;
 	--color-sent-message: #ffffff;
 }
 *{
@@ -76,4 +76,17 @@ i {
 }
 .active{
     background-color: var(--color-active)
+}
+.message {
+    max-width: 75%;
+    border-radius: 10px;
+    padding: 5px;
+}
+.sent {
+    background-color: var(--color-sent-message);
+    align-self: flex-end;
+}
+.received {
+    background-color: var(--color-recived-message);
+    align-self: flex-start;
 }
