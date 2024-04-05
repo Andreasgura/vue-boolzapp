@@ -2,36 +2,51 @@ import { contacts } from "./data.js";
 
 const dt = luxon.DateTime;
 
-const {createApp} = Vue;
+const { createApp } = Vue;
 createApp({
-    data() {
-      return {
-        contacts,
-        activeContactId : 1,
-        textMessage : ''
-      }
+  data() {
+    return {
+      contacts,
+      activeContactId: 1,
+      textMessage: '',
+      answerMessage: 'ok',
+      status: ['sent', 'received']
+    }
+  },
+  methods: {
+    selectContact(id) {
+      this.activeContactId = id
+      console.log(this.activeContactId);
     },
-    methods : {
-      selectContact(id){
-        this.activeContactId = id
-        console.log(this.activeContactId);
-      },
-      newMessage(){
-        const lastMessage =  {
-         date: '10/01/2020 15:30:55',
-         message: this.textMessage,
-         status: 'sent'
-        }
-        this.activeContact.messages.push(lastMessage)
-        this.textMessage = ''
+    /*newObjMessage(){
+      const lastMessage =  {
+       date: '10/01/2020 15:30:55',
+       message: this.textMessage,
+       status: 'sent'
       }
-      },
-    computed : {
-      activeContact(){
+      this.activeContact.messages.push(lastMessage)
+      this.textMessage = ''
+    */
+    sendMessage() {
+      this.newObjMessage(this.textMessage, this.status[0]);
+      this.newObjMessage(this.answerMessage, this.status[1])
+    },
+    newObjMessage(text, status) {
+      const lastMessage = {
+        date: '10/01/2020 15:30:55',
+        message: text,
+        status: status
+      };
+      this.activeContact.messages.push(lastMessage);
+      this.textMessage = '';
+    },
+  },
+  computed: {
+    activeContact() {
 
       /*   let activeContact = null;
         this.contacts.forEach(contact => {
-          
+
         });
 
       function find (array, funzioneInput){
@@ -49,11 +64,11 @@ createApp({
         contact.id === 5;
       } */
 
-        return this.contacts.find(  (contact) =>  contact.id === this.activeContactId ) 
-        },
-      
+      return this.contacts.find((contact) => contact.id === this.activeContactId)
     },
-    mounted () { 
-            
-    }
-  }).mount('#app');
+
+  },
+  mounted() {
+
+  }
+}).mount('#app');
