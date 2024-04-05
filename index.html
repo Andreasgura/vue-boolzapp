@@ -155,8 +155,21 @@
                 <div id="current-chat">
                     <div class="d-flex flex-column" v-for="(msg, index) in activeContact.messages">
                         <div class="message d-flex flex-column" :class="[msg.status]">
-                            <div>{{msg.message}}</div>
-                            <div class="ms-auto ">ora</div>
+                            <div class="btn-group" @click="">
+                                <div class="d-flex flex-row w-100 " >
+                                    <div class="d-flex w-100">
+                                        <div>{{msg.message}}</div>
+                                        <div class="ms-auto justify align-self-end time"><small>12:10</small></div>       
+                                    </div>   
+                                    <div><i class="fa-solid fa-angle-down"></i></div>
+                                </div> 
+                                <ul class="dropdown-menu dropdown-menu-end" style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate(0px, 40px);" data-popper-placement="bottom-end"
+                                :class="{show : show }" >
+                                    <li><button class="dropdown-item" type="button">Message info</button></li>
+                                    <li><button class="dropdown-item" type="button">Delete message</button></li>
+                                </ul>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>

@@ -12,6 +12,7 @@ createApp({
       answerMessage: 'ok',
       status: ['sent', 'received'],
       searchContactText : '',
+      show : false
     }
   },
   methods: {
