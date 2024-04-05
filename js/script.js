@@ -10,7 +10,8 @@ createApp({
       activeContactId: 1,
       textMessage: '',
       answerMessage: 'ok',
-      status: ['sent', 'received']
+      status: ['sent', 'received'],
+      searchContactText : '',
     }
   },
   methods: {
@@ -18,20 +19,16 @@ createApp({
       this.activeContactId = id
       console.log(this.activeContactId);
     },
-    /*newObjMessage(){
-      const lastMessage =  {
-       date: '10/01/2020 15:30:55',
-       message: this.textMessage,
-       status: 'sent'
-      }
-      this.activeContact.messages.push(lastMessage)
-      this.textMessage = ''
-    */
+    
     sendMessage() {
       this.newObjMessage(this.textMessage, this.status[0]);
       this.newObjMessage(this.answerMessage, this.status[1])
     },
-    newObjMessage(text, status) {
+    
+    
+
+    /* fz per creare un nuovo oggetto messaggio, pusharlo nell'array dei messaggi e ripulire la casella di input */
+    newObjMessage(text, status) { 
       const lastMessage = {
         date: '10/01/2020 15:30:55',
         message: text,
@@ -66,9 +63,18 @@ createApp({
 
       return this.contacts.find((contact) => contact.id === this.activeContactId)
     },
-
+    searchContact(){
+      let clonatedContacts = this.contacts.filter((contact)=>{
+        if (this.searchContactText === ''){
+          return contact
+        }
+        else if(contact.name.toLowerCase().includes(this.searchContactText.toLowerCase()))
+        return contact
+      })
+      return clonatedContacts
+    }
   },
   mounted() {
-
+console.log(this.searchContact);
   }
 }).mount('#app');
