@@ -121,7 +121,7 @@
                 <div class="navbar d-flex justify-content-between p-2 ">
                     <ul class="d-flex  align-items-center p-0 m-0 ">
                         <li class="avatar">
-                            <img src="./img/avatar_io.jpg" alt="myavatar" class="w-100 rounded-circle ">
+                            <img :src="'./img/'+ activeContact.avatar" alt="myavatar" class="w-100 rounded-circle ">
                         </li>
                         <li>
                             <span class="px-2 ">
@@ -129,7 +129,7 @@
                             </span>
                             <br>
                             <span class="px-2 ">
-                                ultimo accesso ore
+                                {{lastAccess}}
                             </span>
                         </li>
                     </ul>

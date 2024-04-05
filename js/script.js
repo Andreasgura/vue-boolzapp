@@ -54,8 +54,9 @@ createApp({
       
     },
     deleteMessage(index){
-      this.activeContact.messages.splice(0, 1);
-    }
+      this.activeContact.messages.splice(index, 1);
+    },
+    
   },
   computed: {
     activeContact() {
@@ -92,6 +93,12 @@ createApp({
       })
       return clonatedContacts
     },
+    lastAccess(){
+      let index = this.activeContact.messages.length - 1
+      if(this.activeContact.messages.length > 0 ){
+        return this.activeContact.messages[index].date
+      }
+    }
     
   },
   mounted() {
