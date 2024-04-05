@@ -28,7 +28,7 @@
         <div class="wrapper h-100 w-100 d-flex px-5">
 
             <!-- CONTACTS-BAR -->
-            <div id="contacts-bar" class="h-100 d-flex flex-column">
+            <div id="contacts-bar" class="h-100 d-flex flex-column" @click="clearactiveMessageIndex">
                 <div class="navbar d-flex justify-content-between p-2  ">
                     <ul class="d-flex  align-items-center p-0 m-0 ">
                         <li class="avatar">
@@ -152,10 +152,12 @@
                     </ul>
 
                 </div>
-                <div id="current-chat">
+                <div id="current-chat"
+                >
                     <div class="d-flex flex-column" v-for="(msg, index) in activeContact.messages">
                         <div class="message d-flex flex-column" :class="[msg.status]">
-                            <div class="btn-group" @click="">
+                            <div class="btn-group" 
+                            @click="showDropdownMenu(index)">
                                 <div class="d-flex flex-row w-100 " >
                                     <div class="d-flex w-100">
                                         <div>{{msg.message}}</div>
@@ -164,22 +166,28 @@
                                     <div><i class="fa-solid fa-angle-down"></i></div>
                                 </div> 
                                 <ul class="dropdown-menu dropdown-menu-end" style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate(0px, 40px);" data-popper-placement="bottom-end"
-                                :class="{show : show }" >
+                                :class="{show : activeMessageIndex === index }" >
                                     <li><button class="dropdown-item" type="button">Message info</button></li>
-                                    <li><button class="dropdown-item" type="button">Delete message</button></li>
+                                    <li><button class="dropdown-item" type="button"
+                                        @click="deleteMessage(index)">
+                                        Delete message
+                                    </button></li>
                                 </ul>
                             </div>
                             
                         </div>
                     </div>
                 </div>
-                <div id="write-message" class="d-flex align-items-center justify-content-between ">
+                <div id="write-message" class="d-flex align-items-center justify-content-between "
+                @click="clearactiveMessageIndex">
                     <div class="side">
                         <i class="fa-regular fa-face-smile"></i>
                     </div>
                     <div>
                         <input type="text" class="form-control" placeholder="Scrivi un messaggio" aria-label="Username"
-                            aria-describedby="basic-addon1" v-model="textMessage" @keyup.enter="sendMessage()">
+                            aria-describedby="basic-addon1" 
+                            v-model="textMessage" 
+                            @keyup.enter="sendMessage()">
                     </div>
                     <div class="side">
                         <i class="fa-solid fa-microphone"></i>

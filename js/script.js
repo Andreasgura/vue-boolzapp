@@ -12,13 +12,14 @@ createApp({
       answerMessage: 'ok',
       status: ['sent', 'received'],
       searchContactText : '',
-      show : false
+      activeMessageIndex : null,
     }
   },
   methods: {
     selectContact(id) {
       this.activeContactId = id
       console.log(this.activeContactId);
+      
     },
     
     sendMessage() {
@@ -38,6 +39,23 @@ createApp({
       this.activeContact.messages.push(lastMessage);
       this.textMessage = '';
     },
+    showDropdownMenu(index){
+      
+      if (this.activeMessageIndex != null) {
+        this.activeMessageIndex = null
+      } else {
+        this.activeMessageIndex = index
+      }
+    },
+    clearactiveMessageIndex(){
+      if (this.activeMessageIndex != null) {
+        this.activeMessageIndex = null
+      }
+      
+    },
+    deleteMessage(index){
+      this.activeContact.messages.splice(0, 1);
+    }
   },
   computed: {
     activeContact() {
@@ -73,7 +91,8 @@ createApp({
         return contact
       })
       return clonatedContacts
-    }
+    },
+    
   },
   mounted() {
 console.log(this.searchContact);
